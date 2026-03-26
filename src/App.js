@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import './App.css';
 import { 
   Recycle, 
   Truck, 
@@ -25,7 +26,7 @@ import {
   Lock,
   ThumbsUp,
   RotateCcw,
-  TriangleAlert,
+ AlertTriangle,
   Mail,
   MessageCircle,
   PhoneCall
@@ -564,7 +565,7 @@ function AdminView({ prices, setPrices, orders, setOrders, onExit, onNotify }) {
                         <button onClick={() => { setOrders(prev => prev.map(o => o.id === order.id ? {...o, status: 'Pending'} : o)); onNotify("Reverted."); }} className="flex-1 border-2 border-slate-200 text-slate-400 py-4 rounded-2xl font-black italic uppercase text-xs hover:bg-slate-50 flex items-center justify-center gap-2"><RotateCcw size={16} /> Revert</button>
                       )}
                       {deletingId === order.id ? (
-                        <button onClick={() => { setOrders(o => o.filter(x => x.id !== order.id)); setDeletingId(null); onNotify("Deleted."); }} className="flex-1 bg-red-600 text-white py-4 rounded-2xl font-black italic uppercase text-xs animate-pulse flex items-center justify-center gap-2"><TriangleAlert size={16} /> Confirm</button>
+                        <button onClick={() => { setOrders(o => o.filter(x => x.id !== order.id)); setDeletingId(null); onNotify("Deleted."); }} className="flex-1 bg-red-600 text-white py-4 rounded-2xl font-black italic uppercase text-xs animate-pulse flex items-center justify-center gap-2"><AlertTriangle size={16} /> Confirm</button>
                       ) : (
                         <button onClick={() => setDeletingId(order.id)} className="flex-1 bg-red-100 text-red-600 py-4 rounded-2xl font-black italic uppercase text-xs hover:bg-red-600 hover:text-white transition-all flex items-center justify-center gap-2"><Trash2 size={16} /> Delete</button>
                       )}
